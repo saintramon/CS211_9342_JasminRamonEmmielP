@@ -1,10 +1,12 @@
 package prelim;
 
-public class MyFixedSizeArrayList implements MyList<String>{
+import java.util.*;
 
+public class MyFixedSizeArrayList implements MyList<Object>{
     private final int size = 5;
 
-    private Object[] array = new Object[size];
+    private final Object[] array = new Object[size];
+
 
     @Override
     public int getSize() {
@@ -12,22 +14,46 @@ public class MyFixedSizeArrayList implements MyList<String>{
     }
 
     @Override
-    public void insert(String data) {
+    public void insert(Object data) throws ListOverflowException{
+        for (int i = 0; i < this.array.length; i++){
+            if (array[i] == null){
+                array[i] = data;
+                return;
+            }
+        }
 
+        throw new ListOverflowException();
     }
 
     @Override
-    public String getElement(String data) {
-        return null;
+    public Object getElement(Object data) {
+        for (int i = 0; i < this.array.length; i++){
+            if (data.equals(array[i])){
+                return array[i];
+            }
+        }
+        throw new NoSuchElementException();
     }
 
     @Override
-    public boolean delete(String data) {
+    public boolean delete(Object data) {
+        for (int i = 0; i < this.array.length; i++){
+            if (data.equals(array[i])){
+                array[i] = null;
+                return true;
+            }
+        }
         return false;
     }
 
     @Override
-    public int search(String data) {
-        return 0;
+    public int search(Object data) {
+        for (int i = 0; i < this.array.length; i++){
+            if (data.equals(this.array[i])){
+                return i;
+            }
+        }
+        return -1;
     }
+
 }
