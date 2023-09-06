@@ -1,6 +1,9 @@
 package prelim;
 
 public class ExecutableMyFixedSizeArrayList {
+    /**
+     * This is the Student class that will be utilized for the demonstration of the MyFixedArrayList class
+     */
     private class Student{
         private String lastName;
         private String idNumber;
@@ -48,6 +51,13 @@ public class ExecutableMyFixedSizeArrayList {
         }
     }
 
+    /**
+     * This run method demonstrates the different usages of the MyFixedArrayList class
+     *
+     * It initializes 6 students that is inserted within the list
+     * The method then prints out the list to display the students stored in it
+     * @throws ListOverflowException
+     */
     public void run() throws ListOverflowException{
         MyFixedSizeArrayList studentList = new MyFixedSizeArrayList();
 
@@ -59,9 +69,14 @@ public class ExecutableMyFixedSizeArrayList {
         Student s6 = new Student("Leung", "2230000");
 
         studentList.insert(s1);
-        studentList.insert(s2);
+        studentList.insert(1,s2);
         studentList.insert(s3);
-        studentList.insert(s4);
+        studentList.insert(3,s4);
         studentList.insert(s5);
+        //studentList.insert(s6); will trigger the ListOverflowException
+
+        for (int i = 0; i < studentList.getSize(); i++){
+            System.out.println(studentList.getElement(i));
+        }
     }
 }
