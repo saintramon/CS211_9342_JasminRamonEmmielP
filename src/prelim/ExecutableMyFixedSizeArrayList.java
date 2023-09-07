@@ -1,3 +1,13 @@
+/**
+ *SAMPLE RUN:
+ *
+ * Jasmin, 2230748
+ * Lacanilao, 2230654
+ * Roxas, 2230456
+ * Tank, 2233210
+ * De Torres, 2230123
+ * SIZE OF THE LIST: 5
+ */
 package prelim;
 
 public class ExecutableMyFixedSizeArrayList {
@@ -78,5 +88,6 @@ public class ExecutableMyFixedSizeArrayList {
         for (int i = 0; i < studentList.getSize(); i++){
             System.out.println(studentList.getElement(i));
         }
+        System.out.println("SIZE OF THE LIST: " + studentList.getSize());
     }
 }

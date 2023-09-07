@@ -1,6 +1,34 @@
+/**
+ * SAMPLE RUN:
+ *
+ * The Calculus 7, Leithold
+ * Introduction to Algorithms, CLRS
+ * Graph Theory, Wilson
+ * Discrete Mathematics and its Applications, Rosen
+ * Probability and Statistics, Walpole
+ * The Algorithm Manual, Skiena
+ * Algorithms, Sedgewick
+ * CURRENT SIZE OF THE DYNAMIC LIST: 7
+ *
+ *
+ *
+ * The Calculus 7, Leithold
+ * Introduction to Algorithms, CLRS
+ * Discrete Mathematics and its Applications, Rosen
+ * Probability and Statistics, Walpole
+ * The Algorithm Manual, Skiena
+ * CURRENT SIZE OF THE DYNAMIC LIST: 5
+ */
 package prelim;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class ExecutableMyGrowingArrayList {
+    /**
+     * The book class will be utilized as the example for this task.
+     * The book class have 2 attributes which are the book title and the book author.
+     */
     private class Book{
         private String title;
         private String author;
@@ -46,6 +74,12 @@ public class ExecutableMyGrowingArrayList {
         }
     }
 
+    /**
+     * In this method, the application and implementations of some methods in the MyGrowingArrayList class are illustrated.
+     * The method displays the insert functions by passing an Object arguement or passing an index and Object parameters for the method.
+     * The method also displays the delete functions in which the user can delete an object in the list by using the Object name or its index in the list.
+     * For each block of functions, the list is then displayed to have a visual on its current elements.
+     */
     public void run(){
         MyGrowingArrayList bookList = new MyGrowingArrayList();
 
@@ -59,23 +93,26 @@ public class ExecutableMyGrowingArrayList {
 
         bookList.insert(b1);
         bookList.insert(b2);
-        bookList.insert(b3);
+        bookList.insert(2,b3);
         bookList.insert(b4);
         bookList.insert(b5);
-
-        System.out.println("CURRENT SIZE: "+bookList.getSize());
-
         bookList.insert(b6);
-        System.out.println("CURRENT SIZE: "+bookList.getSize());
-
-        bookList.insert(b7);
-        System.out.println("CURRENT SIZE: "+bookList.getSize());
-
-        bookList.delete(b6);
-        System.out.println("CURRENT SIZE: "+bookList.getSize());
+        bookList.insert(6,b7);
 
         for (int i = 0; i < bookList.getSize(); i++){
             System.out.println(bookList.getElement(i).toString());
         }
+        System.out.println("CURRENT SIZE OF THE DYNAMIC LIST: " + bookList.getSize());
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+
+        bookList.delete(b7);
+        bookList.delete(2);
+        for (int i = 0; i < bookList.getSize(); i++){
+            System.out.println(bookList.getElement(i).toString());
+        }
+        System.out.println("CURRENT SIZE OF THE DYNAMIC LIST: " + bookList.getSize());
     }
 }

@@ -1,3 +1,7 @@
+/**
+ * PRELIM INDIVIDUAL PROJECT TASK 2
+ * NAME: Jasmin, Ramon Emmiel P.
+ */
 package prelim;
 
 import java.util.*;
@@ -9,15 +13,28 @@ public class MyGrowingArrayList implements MyList{
 
     private Object[] array;
 
+    /**
+     * This constructor will initialize the MyGrowingArrayList object with an initial capacity of 5 and the size will depend on how many elements are in
+     * the current list.
+     */
     public MyGrowingArrayList(){
         this.array = new Object[INITIAL_SIZE];
         size = 0;
     }
 
+    /**
+     * This method returns the current size of the list.
+     * @return
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * These methods insert the passed Object in the list.
+     * The capacity of the list will then double but the size will only increment by 1.
+     * @param data
+     */
     @Override
     public void insert(Object data){
         if (size == array.length){
@@ -43,6 +60,11 @@ public class MyGrowingArrayList implements MyList{
         size++;
     }
 
+    /**
+     * These methods will return the key object or the corresponding object within the given index.
+     * @param data
+     * @return
+     */
     @Override
     public Object getElement(Object data) {
         for (int i = 0; i < this.size; i++){
@@ -56,6 +78,11 @@ public class MyGrowingArrayList implements MyList{
         return array[index];
     }
 
+    /**
+     * These methods delete the passed object or the object corresponding to the passed index in the list.
+     * @param data
+     * @return
+     */
     @Override
     public boolean delete(Object data) {
         for (int i = 0; i < this.size; i++){
@@ -76,6 +103,11 @@ public class MyGrowingArrayList implements MyList{
         return false;
     }
 
+    /**
+     * This method returns the index of the object to be found if the passed key is within the list, -1 otherwise.
+     * @param data
+     * @return
+     */
     @Override
     public int search(Object data) {
         for (int i = 0; i < this.size; i++){
