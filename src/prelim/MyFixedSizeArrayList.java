@@ -1,5 +1,5 @@
 /**
- * PRELIM TASK 1
+ * PRELIM INDIVIDUAL PROJECT TASK 1
  * NAME: Jasmin, Ramon Emmiel P.
  */
 package prelim;
