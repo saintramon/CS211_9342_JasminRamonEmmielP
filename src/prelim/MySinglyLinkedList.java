@@ -67,31 +67,94 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
 
     @Override
     public void insertAtIndex(int index, Object data) {
+        Node newNode = new Node(data);
 
+        if (index == 0){
+            newNode.setNext(this.head);
+            this.head = newNode;
+
+            if (this.tail == null){
+                this.tail = newNode;
+            }
+
+            ++size;
+        }
+
+        if (this.head == null){
+            this.head = newNode;
+            this.tail = newNode;
+            ++size;
+        }else {
+            Node curr = this.head;
+            int counter = 0;
+
+            while (counter + 1 != index){
+                curr = curr.getNext();
+                counter++;
+            }
+
+            if (curr == null){
+                throw new IndexOutOfBoundsException();
+            }
+
+            newNode.setNext(curr.getNext());
+            curr.setNext(newNode);
+            ++size;
+
+            if (newNode.getNext() == null){
+                this.tail = newNode;
+            }
+        }
     }
 
     @Override
     public void deleteAtHead() {
-        this.head = this.head.getNext();
-        --this.size;
+        if (this.head != null){
+            Node oldHead = this.head;
+            this.head = this.head.getNext();
+            oldHead.setNext(null);
+            --this.size;
+        }
     }
 
     @Override
     public void deleteAtTail() {
         Node curr = this.head;
 
-        while (curr.getNext().getNext() != null){
-            curr = curr.getNext();
+        if (this.head != null){
+            while (curr.getNext().getNext() != null){
+                curr = curr.getNext();
+            }
+            curr.setNext(null);
+            this.tail = curr;
+            --this.size;
         }
-
-        curr.setNext(null);
-        this.tail = curr;
-        --this.size;
     }
 
     @Override
     public void deleteAtIndex(int index) {
+        Node curr = this.head;
+        int counter = 0;
 
+        if (index == 0){
+            this.head = this.head.getNext();
+            if (this.size == 1){
+                this.tail = null;
+            }
+        }
+
+        while (counter + 1 != index){
+            curr = curr.getNext();
+            counter++;
+        }
+
+        curr.setNext(curr.getNext().getNext());
+
+        if (curr.getNext() == null){
+            this.tail = curr;
+        }
+
+        --size;
     }
 
     public String toString(){
@@ -100,9 +163,10 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
 
         while (curr != null){
             s += curr.toString() + "->";
+            curr = curr.getNext();
         }
 
-        s+= "->" + "null";
+        s+= "null";
 
         return s;
     }
