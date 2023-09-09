@@ -1,3 +1,7 @@
+/**
+ * PRELIM INDIVIDUAL PROJECT TASK 3
+ * NAME: Jasmin, Ramon Emmiel P.
+ */
 package prelim;
 
 public class MySinglyLinkedList<T> implements LinkedListInterface {
@@ -6,42 +10,112 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
     private Node<T> head;
     private Node<T> tail;
 
+    /**
+     * This method creates a linked list that sets the size to 0, head node to null, and tail node to null.
+     */
     public MySinglyLinkedList(){
         this.size = 0;
         this.head = null;
         this.tail = null;
     }
 
+    /**
+     * This method returns the head of the linked list.
+     * @return
+     */
     public Node<T> getHead() {
         return head;
     }
 
+    /**
+     * This method returns the tail of the linked list.
+     * @return
+     */
     public Node<T> getTail() {
         return tail;
     }
 
+    /**
+     * This method sets the head of the linked list.
+     * @param head
+     */
     public void setHead(Node<T> head) {
         this.head = head;
     }
 
+    /**
+     * This method sets the tail of the linked list.
+     * @param tail
+     */
     public void setTail(Node<T> tail) {
         this.tail = tail;
     }
 
-
+    /**
+     * This method returns the size of the linked list.
+     * @return
+     */
     @Override
     public int getSize() {
         return this.size;
     }
 
+    /**
+     * This method returns true if the linked list has no nodes, false otherwise.
+     * @return
+     */
     @Override
     public boolean isEmpty() {
         return head == null;
     }
 
+    /**
+     * This method returns as node of the linked list based on the given index.
+     * @param index
+     * @return
+     */
+    @Override
+    public Node<T> getElement(int index) {
+        int currCounter = 0;
+        Node<T> curr = this.head;
+
+        if (index < 0 || index >= this.size){
+            throw new IndexOutOfBoundsException();
+        }
+
+        while (currCounter != index){
+            curr = curr.getNext();
+            currCounter++;
+        }
+
+        return curr;
+    }
+
+    /**
+     * This method returns the index of the key node if it is in the linked list, returns -1 if not found.
+     * @param data
+     * @return
+     */
+    @Override
+    public int search(Object data) {
+        Node<T> curr = this.head;
+
+        for (int i = 0; i < this.size; i++){
+            if (curr.getData().equals(data)){
+                return i;
+            }
+            curr = curr.getNext();
+        }
+        return -1;
+    }
+
+    /**
+     * This method inserts a new node at the head of the linked list.
+     * @param data
+     */
     @Override
     public void insertAtHead(Object data) {
-        Node newNode = new Node(data);
+        Node<T> newNode = new Node(data);
         if (this.head == null){
             this.head = newNode;
             this.tail = newNode;
@@ -52,9 +126,13 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
         this.size++;
     }
 
+    /**
+     * This method inserts a node at the tail of the linked list.
+     * @param data
+     */
     @Override
     public void insertAtTail(Object data) {
-        Node newNode = new Node(data);
+        Node<T> newNode = new Node(data);
         if (this.head == null){
             this.head = newNode;
             this.tail = newNode;
@@ -65,9 +143,14 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
         this.size++;
     }
 
+    /**
+     * This method inserts a node at the chosen index of the user.
+     * @param index
+     * @param data
+     */
     @Override
     public void insertAtIndex(int index, Object data) {
-        Node newNode = new Node(data);
+        Node<T> newNode = new Node(data);
 
         if (index == 0){
             newNode.setNext(this.head);
@@ -85,7 +168,7 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
             this.tail = newNode;
             ++size;
         }else {
-            Node curr = this.head;
+            Node<T> curr = this.head;
             int counter = 0;
 
             while (counter + 1 != index){
@@ -107,19 +190,25 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
         }
     }
 
+    /**
+     * This method deletes the head of the linked list and assigns the next node of the previous head as the head of the linked list.
+     */
     @Override
     public void deleteAtHead() {
         if (this.head != null){
-            Node oldHead = this.head;
+            Node<T> oldHead = this.head;
             this.head = this.head.getNext();
             oldHead.setNext(null);
             --this.size;
         }
     }
 
+    /**
+     * This method deletes the tail of the linked list and assigns the previous node as the new tail of the linked list.
+     */
     @Override
     public void deleteAtTail() {
-        Node curr = this.head;
+        Node<T> curr = this.head;
 
         if (this.head != null){
             while (curr.getNext().getNext() != null){
@@ -131,9 +220,13 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
         }
     }
 
+    /**
+     * This method deletes a node at the chosen index of the user.
+     * @param index
+     */
     @Override
     public void deleteAtIndex(int index) {
-        Node curr = this.head;
+        Node<T> curr = this.head;
         int counter = 0;
 
         if (index == 0){
@@ -157,12 +250,16 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
         --size;
     }
 
+    /**
+     * This method returns a String representation of the linked list.
+     * @return
+     */
     public String toString(){
         String s = "";
-        Node curr = this.head;
+        Node<T> curr = this.head;
 
         while (curr != null){
-            s += curr.toString() + "->";
+            s += curr.toString() + " -> ";
             curr = curr.getNext();
         }
 

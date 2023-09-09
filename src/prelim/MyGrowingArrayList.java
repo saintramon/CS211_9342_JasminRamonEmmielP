@@ -6,7 +6,7 @@ package prelim;
 
 import java.util.*;
 
-public class MyGrowingArrayList implements MyList{
+public class MyGrowingArrayList implements MyList<Object>{
     private final int INITIAL_SIZE = 5;
 
     private int size;
