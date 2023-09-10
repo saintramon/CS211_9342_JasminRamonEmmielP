@@ -111,6 +111,7 @@ public class MyGrowingArrayList implements MyList<Object>{
     @Override
     public int search(Object data) {
         for (int i = 0; i < this.size; i++){
+            System.out.println("Comparing data: " + data.toString() + " with array[" + i + "]: " + array[i].toString());
             if (data.equals(array[i])){
                 return i;
             }

@@ -18,6 +18,14 @@
  * Probability and Statistics, Walpole
  * The Algorithm Manual, Skiena
  * CURRENT SIZE OF THE DYNAMIC LIST: 5
+ *
+ *
+ * SEARCH KEY: Probability and Statistics, Walpole
+ * Comparing data: Probability and Statistics, Walpole with array[0]: The Calculus 7, Leithold
+ * Comparing data: Probability and Statistics, Walpole with array[1]: Introduction to Algorithms, CLRS
+ * Comparing data: Probability and Statistics, Walpole with array[2]: Discrete Mathematics and its Applications, Rosen
+ * Comparing data: Probability and Statistics, Walpole with array[3]: Probability and Statistics, Walpole
+ * SERCH STATUS (index of key): 3
  */
 package prelim;
 
@@ -61,7 +69,8 @@ public class ExecutableMyGrowingArrayList {
 
         @Override
         public boolean equals(Object obj) {
-            return super.equals(obj);
+            Book another = (Book) obj;
+            return this.title.equalsIgnoreCase(another.getTitle()) && this.author.equalsIgnoreCase(another.getAuthor());
         }
     }
 
@@ -114,5 +123,8 @@ public class ExecutableMyGrowingArrayList {
             System.out.println(bookList.getElement(i).toString());
         }
         System.out.println("CURRENT SIZE OF THE DYNAMIC LIST: " + bookList.getSize());
+
+        System.out.println("\n\nSEARCH KEY: " + b5.toString());
+        System.out.println("SERCH STATUS (index of key): " + bookList.search(b5));
     }
 }
