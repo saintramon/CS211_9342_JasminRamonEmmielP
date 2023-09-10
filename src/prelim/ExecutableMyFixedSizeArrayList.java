@@ -1,12 +1,26 @@
 /**
  *SAMPLE RUN:
- *
+ * SIZE OF THE LIST: 5
  * Jasmin, 2230748
  * Lacanilao, 2230654
  * Roxas, 2230456
  * Tank, 2233210
  * De Torres, 2230123
+ *
+ *
  * SIZE OF THE LIST: 5
+ * Jasmin, 2230748
+ * Lacanilao, 2230654
+ * Roxas, 2230456
+ * Tank, 2233210
+ * null
+ *
+ *
+ * KEY TO SEARCH: Roxas, 2230456
+ * Comparing data: Roxas, 2230456 with array[0]: Jasmin, 2230748
+ * Comparing data: Roxas, 2230456 with array[1]: Lacanilao, 2230654
+ * Comparing data: Roxas, 2230456 with array[2]: Roxas, 2230456
+ * SEARCH STATUS (index of key): 2
  */
 package prelim;
 
@@ -62,10 +76,8 @@ public class ExecutableMyFixedSizeArrayList {
     }
 
     /**
-     * This run method demonstrates the different usages of the MyFixedArrayList class
-     *
-     * It initializes 6 students that is inserted within the list
-     * The method then prints out the list to display the students stored in it
+     * This run method demonstrates the different usages of the MyFixedArrayList class.
+     * It displays the different usages of the MyList interface methods implemented in the MyFixedArrayList class.
      * @throws ListOverflowException
      */
     public void run() throws ListOverflowException{
@@ -85,9 +97,18 @@ public class ExecutableMyFixedSizeArrayList {
         studentList.insert(s5);
         //studentList.insert(s6); will trigger the ListOverflowException
 
+        System.out.println("SIZE OF THE LIST: " + studentList.getSize());
         for (int i = 0; i < studentList.getSize(); i++){
             System.out.println(studentList.getElement(i));
         }
-        System.out.println("SIZE OF THE LIST: " + studentList.getSize());
+
+        System.out.println("\n\nSIZE OF THE LIST: " + studentList.getSize());
+        studentList.delete(s5);
+        for (int i = 0; i < studentList.getSize(); i++){
+            System.out.println(studentList.getElement(i));
+        }
+
+        System.out.println("\n\nKEY TO SEARCH: " + s3.toString());
+        System.out.println("SEARCH STATUS (index of key): " + studentList.search(s3));
     }
 }

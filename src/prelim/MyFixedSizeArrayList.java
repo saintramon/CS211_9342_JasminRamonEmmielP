@@ -80,7 +80,7 @@ public class MyFixedSizeArrayList implements MyList<Object>{
     }
 
     /**
-     * This method deleted the specified object within the list
+     * This method deletes the specified object within the list
      * @param data
      * @return
      */
@@ -103,6 +103,7 @@ public class MyFixedSizeArrayList implements MyList<Object>{
     @Override
     public int search(Object data) {
         for (int i = 0; i < this.array.length; i++){
+            System.out.println("Comparing data: " + data.toString() + " with array[" + i + "]: " + array[i].toString());
             if (data.equals(this.array[i])){
                 return i;
             }
