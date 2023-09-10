@@ -233,14 +233,18 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
      */
     @Override
     public void deleteAtTail() {
-        Node<T> curr = this.head;
-
         if (this.head != null){
-            while (curr.getNext().getNext() != null){
-                curr = curr.getNext();
+            if (this.head.getNext() == null){
+                this.head = null;
+                this.tail = null;
+            }else {
+                Node<T> curr = this.head;
+                while (curr.getNext().getNext() != null){
+                    curr = curr.getNext();
+                }
+                curr.setNext(null);
+                this.tail = curr;
             }
-            curr.setNext(null);
-            this.tail = curr;
             --this.size;
         }
     }
