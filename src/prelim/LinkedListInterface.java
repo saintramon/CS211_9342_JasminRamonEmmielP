@@ -5,6 +5,7 @@ public interface LinkedListInterface<T> {
     public boolean isEmpty();
 
     public T getElement(int index);
+    public T getElement(T data);
 
     public int search(T data);
 

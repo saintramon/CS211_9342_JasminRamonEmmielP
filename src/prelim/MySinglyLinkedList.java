@@ -4,6 +4,8 @@
  */
 package prelim;
 
+import java.util.NoSuchElementException;
+
 public class MySinglyLinkedList<T> implements LinkedListInterface {
 
     private int size;
@@ -88,7 +90,30 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
             currCounter++;
         }
 
+        if (curr == null){
+            throw new NoSuchElementException();
+        }
+
         return curr;
+    }
+
+    /**
+     * This method returns a Node of the linked list in accordance to the inputted object.
+     * @param data
+     * @return
+     */
+    @Override
+    public Node<T> getElement(Object data) throws NoSuchElementException {
+        Node<T> curr = this.head;
+
+        while (curr != null){
+            if (curr.getData().equals(data)){
+                return curr;
+            }
+            curr = curr.getNext();
+        }
+
+        throw new NoSuchElementException();
     }
 
     /**
@@ -234,6 +259,7 @@ public class MySinglyLinkedList<T> implements LinkedListInterface {
             if (this.size == 1){
                 this.tail = null;
             }
+            return;
         }
 
         while (counter + 1 != index){
