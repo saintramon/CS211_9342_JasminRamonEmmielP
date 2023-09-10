@@ -1,6 +1,35 @@
+/**
+ * SAMPLE RUN:
+ *
+ * CURRENT HEAD: Payphone by Maroon 5
+ * CURRENT TAIL: Shape of You by Ed Sheeran
+ * CURRENT SIZE: 3
+ * null <-> Payphone by Maroon 5 <-> Bohemian Rhapsody by Queen <-> Shape of You by Ed Sheeran <-> null
+ *
+ *
+ * CURRENT HEAD: Imagine by John Lennon
+ * CURRENT TAIL: Billie Jean by Michael Jackson
+ * CURRENT SIZE: 7
+ * null <-> Imagine by John Lennon <-> Payphone by Maroon 5 <-> Bohemian Rhapsody by Queen <-> Shape of You by Ed Sheeran <-> Hotel California by Eagles <-> Rolling in the Deep by Adele <-> Billie Jean by Michael Jackson <-> null
+ *
+ *
+ * CURRENT HEAD: Payphone by Maroon 5
+ * CURRENT TAIL: Rolling in the Deep by Adele
+ * CURRENT SIZE: 4
+ * null <-> Payphone by Maroon 5 <-> Bohemian Rhapsody by Queen <-> Shape of You by Ed Sheeran <-> Rolling in the Deep by Adele <-> null
+ *
+ *
+ *
+ * SEARCH KEY: Shape of You by Ed Sheeran
+ * SEARCH STATUS (index of key): 2
+ */
 package prelim;
 
 public class ExecutableMyDoublyLinkedList {
+    /**
+     * The class Music will be used to emulate a MUSIC PLAYER in which a music player has songs that have a previous song and a next song.
+     * The music class has 2 attributes which are the song title and song artist.
+     */
     private class Music{
         private String title;
         private String artist;
@@ -45,6 +74,10 @@ public class ExecutableMyDoublyLinkedList {
         }
     }
 
+    /**
+     * This method simply displays the different functions of the MyDoublyLinkedList methods and how it is used in different use cases.
+     * The code below displays how the insert and deletion methods are used in different scenarios. The search method is also displayed to display its function.
+     */
     public void run(){
         MyDoublyLinkedList<Music> doubly = new MyDoublyLinkedList<>();
 
@@ -56,32 +89,34 @@ public class ExecutableMyDoublyLinkedList {
         Music m6 = new Music("Rolling in the Deep", "Adele");
         Music m7 = new Music("Billie Jean", "Michael Jackson");
 
-        /*
         doubly.insertAtHead(m1);
         doubly.insertAtTail(m2);
-        doubly.insertAtTail(m3);
-        doubly.insertAtTail(m4);
-        doubly.insertAtTail(m5);
+        doubly.insertAtIndex(2,m3);
 
 
-         */
-
-        doubly.insertAtIndex(0,m1);
-
-
+        System.out.println("CURRENT HEAD: " + doubly.getHead());
+        System.out.println("CURRENT TAIL: " + doubly.getTail());
+        System.out.println("CURRENT SIZE: " + doubly.getSize());
         System.out.println(doubly.toString());
-        System.out.println("CURRENT HEAD: " + doubly.getHead());
+
+        doubly.insertAtHead(m4);
+        doubly.insertAtTail(m5);
+        doubly.insertAtTail(m6);
+        doubly.insertAtIndex(6,m7);
+        System.out.println("\n\nCURRENT HEAD: " + doubly.getHead());
         System.out.println("CURRENT TAIL: " + doubly.getTail());
-        System.out.println(doubly.getSize());
+        System.out.println("CURRENT SIZE: " + doubly.getSize());
+        System.out.println(doubly.toString());
 
-
-        doubly.deleteAtHead();
         doubly.deleteAtTail();
-        doubly.deleteAtIndex(1);
-        System.out.println("\n\n\n"+doubly.toString());
-        System.out.println("CURRENT HEAD: " + doubly.getHead());
+        doubly.deleteAtHead();
+        doubly.deleteAtIndex(3);
+        System.out.println("\n\nCURRENT HEAD: " + doubly.getHead());
         System.out.println("CURRENT TAIL: " + doubly.getTail());
-        System.out.println(doubly.getSize());
+        System.out.println("CURRENT SIZE: " + doubly.getSize());
+        System.out.println(doubly.toString());
 
+        System.out.println("\n\n\nSEARCH KEY: " + m3);
+        System.out.println("SEARCH STATUS (index of key): " + doubly.search(m3));
     }
 }
