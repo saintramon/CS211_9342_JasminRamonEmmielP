@@ -1,5 +1,7 @@
 package prelim;
 
+import java.util.NoSuchElementException;
+
 public class MySinglyLinkedCircularList<T> implements LinkedListInterface{
 
     private Node<T> head;
@@ -40,17 +42,47 @@ public class MySinglyLinkedCircularList<T> implements LinkedListInterface{
 
     @Override
     public Object getElement(int index) {
-        return null;
+        Node<T> curr = this.head;
+        int counter = 0;
+
+        while (counter != index){
+            curr = curr.getNext();
+            ++counter;
+        }
+
+        if (curr == null){
+            throw new NoSuchElementException();
+        }
+
+        return curr;
     }
 
     @Override
     public Object getElement(Object data) {
-        return null;
+        Node<T> curr = this.head;
+
+        while (curr != null){
+            if (curr.getData().equals(data)){
+                return curr;
+            }
+            curr = curr.getNext();
+        }
+
+        throw new NoSuchElementException();
     }
 
     @Override
     public int search(Object data) {
-        return 0;
+        Node<T> curr = this.head;
+
+        for (int i = 0; i < this.size; i++){
+            if (curr.getData().equals(data)){
+                return i;
+            }
+            curr = curr.getNext();
+        }
+
+        return -1;
     }
 
     @Override
@@ -60,11 +92,9 @@ public class MySinglyLinkedCircularList<T> implements LinkedListInterface{
         if (this.head == null){
             this.head = newNode;
             this.tail = newNode;
-            this.head.setPrev(this.tail);
             this.tail.setNext(this.head);
         }else {
             newNode.setNext(this.head);
-            newNode.setPrev(this.tail);
             this.tail.setNext(newNode);
             this.head = newNode;
         }
@@ -79,12 +109,10 @@ public class MySinglyLinkedCircularList<T> implements LinkedListInterface{
         if (this.head == null){
             this.head = newNode;
             this.tail = newNode;
-            this.head.setPrev(this.tail);
             this.tail.setNext(this.head);
         }else {
+            this.tail.setNext(newNode);
             newNode.setNext(this.head);
-            newNode.setPrev(this.tail);
-            this.head.setPrev(newNode);
             this.tail = newNode;
         }
 
@@ -100,13 +128,12 @@ public class MySinglyLinkedCircularList<T> implements LinkedListInterface{
     @Override
     public void deleteAtHead() {
         if (this.head !=null){
-            if (this.head.getNext() == null && this.tail.getNext() == null){
+            if (this.head == this.tail){
                 this.head = null;
                 this.tail = null;
             }else {
                 Node<T> oldHead = this.head;
                 this.head = oldHead.getNext();
-                this.head.setPrev(this.tail);
                 this.tail.setNext(this.head);
                 oldHead.setNext(null);
             }
@@ -116,7 +143,20 @@ public class MySinglyLinkedCircularList<T> implements LinkedListInterface{
 
     @Override
     public void deleteAtTail() {
-
+        if (this.head != null){
+            if (this.head == this.tail){
+                this.head = null;
+                this.tail = null;
+            }else {
+                Node<T> curr = this.head;
+                while (curr.getNext() != this.tail){
+                    curr = curr.getNext();
+                }
+                curr.setNext(this.head);
+                this.tail = curr;
+            }
+        }
+        --this.size;
     }
 
     @Override

@@ -58,22 +58,33 @@ public class ExecutableMySinglyLinkedCircularList {
         BasketballTeam b2 = new BasketballTeam("Cavaliers","Lady Gaga",15);
         BasketballTeam b3 = new BasketballTeam("Timberwolves","Elton John",15);
         BasketballTeam b4 = new BasketballTeam("Heat","John Rey De Torres",15);
+        BasketballTeam b5 = new BasketballTeam("Lakers", "Frank Vogel", 15);
+        BasketballTeam b6 = new BasketballTeam("Bulls", "Billy Donovan", 15);
+        BasketballTeam b7 = new BasketballTeam("Knicks", "Tom Thibodeau", 15);
+        BasketballTeam b8 = new BasketballTeam("Rockets", "Stephen Silas", 15);
+        BasketballTeam b9 = new BasketballTeam("Suns", "Monty Williams", 15);
+        BasketballTeam b10 = new BasketballTeam("Clippers", "Tyronn Lue", 15);
 
         NBA.insertAtHead(b1);
         NBA.insertAtTail(b2);
         NBA.insertAtTail(b3);
         NBA.insertAtTail(b4);
+        NBA.insertAtTail(b5);
+        NBA.insertAtTail(b6);
 
 
-        System.out.println("CURRENT HEAD: " + NBA.getHead().getData().toString());
-        System.out.println("CURRENT TAIL: " + NBA.getTail().getData().toString());
-        System.out.println("HEAD PREV: " + NBA.getHead().getPrev().getData().toString());
-        System.out.println("TAIL NEXT: " + NBA.getTail().getNext().getData().toString());
+        System.out.println("CURRENT HEAD: " + NBA.getHead());
+        System.out.println("CURRENT TAIL: " + NBA.getTail());
+        System.out.println("TAIL NEXT: " + NBA.getTail().getNext());
 
         NBA.deleteAtHead();
-        System.out.println("\n\nCURRENT HEAD: " + NBA.getHead().getData().toString());
-        System.out.println("CURRENT TAIL: " + NBA.getTail().getData().toString());
-        System.out.println("HEAD PREV: " + NBA.getHead().getPrev().getData().toString());
-        System.out.println("TAIL NEXT: " + NBA.getTail().getNext().getData().toString());
+        System.out.println("\n\nCURRENT HEAD: " + NBA.getHead());
+        System.out.println("CURRENT TAIL: " + NBA.getTail());
+        System.out.println("TAIL NEXT: " + NBA.getTail().getNext());
+
+        NBA.deleteAtTail();
+        System.out.println("\n\nCURRENT HEAD: " + NBA.getHead());
+        System.out.println("CURRENT TAIL: " + NBA.getTail());
+        System.out.println("TAIL NEXT: " + NBA.getTail().getNext());
     }
 }
