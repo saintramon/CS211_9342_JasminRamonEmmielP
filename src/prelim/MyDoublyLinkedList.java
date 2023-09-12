@@ -80,6 +80,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
         while (counter != index){
             curr = curr.getNext();
+            ++counter;
         }
 
         if (curr == null){
