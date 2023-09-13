@@ -29,9 +29,6 @@
  */
 package prelim;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class ExecutableMyGrowingArrayList {
     /**
      * The book class will be utilized as the example for this task.

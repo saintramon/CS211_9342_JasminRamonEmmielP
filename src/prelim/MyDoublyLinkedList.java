@@ -1,3 +1,7 @@
+/**
+ * PRELIM INDIVIDUAL PROJECT TASK 4
+ * NAME: Jasmin, Ramon Emmiel P.
+ */
 package prelim;
 
 import java.util.*;
@@ -9,9 +13,9 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
     private int size;
 
     /**
-     * This constructor creates a doubly linked list object that sets its head and tail to null, size to 0;
+     * This constructor creates a doubly linked list object that sets its head and tail to null, size to 0.
      */
-    public MyDoublyLinkedList(){
+    public MyDoublyLinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
@@ -19,7 +23,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns the current head of the linked list.
-     * @return
+     * @return The head node of the linked list
      */
     public Node<T> getHead() {
         return head;
@@ -27,7 +31,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns the current tail of the linked list.
-     * @return
+     * @return The tail node of the linked list
      */
     public Node<T> getTail() {
         return tail;
@@ -35,7 +39,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns the current size of the linked list.
-     * @return
+     * @return The size of the linked list
      */
     @Override
     public int getSize() {
@@ -44,7 +48,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method sets the head of the linked list.
-     * @param head
+     * @param head The new head node
      */
     public void setHead(Node<T> head) {
         this.head = head;
@@ -52,7 +56,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method sets the tail of the linked list.
-     * @param tail
+     * @param tail The new tail node
      */
     public void setTail(Node<T> tail) {
         this.tail = tail;
@@ -60,7 +64,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns true if the linked list has no element, false otherwise.
-     * @return
+     * @return True if the linked list is empty, otherwise false
      */
     @Override
     public boolean isEmpty() {
@@ -69,21 +73,21 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns the node of the linked list at the chosen index.
-     * @param index
-     * @return
-     * @throws NoSuchElementException
+     * @param index The index of the element to retrieve
+     * @return The node at the specified index
+     * @throws NoSuchElementException if the index is out of bounds
      */
     @Override
-    public Node<T> getElement(int index) throws NoSuchElementException{
+    public Node<T> getElement(int index) throws NoSuchElementException {
         Node<T> curr = this.head;
         int counter = 0;
 
-        while (counter != index){
+        while (counter != index) {
             curr = curr.getNext();
             ++counter;
         }
 
-        if (curr == null){
+        if (curr == null) {
             throw new NoSuchElementException();
         }
 
@@ -92,16 +96,16 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns the node of the linked list at the inputted object, returns null if invalid.
-     * @param data
-     * @return
-     * @throws NoSuchElementException
+     * @param data The data of the element to retrieve
+     * @return The node with the specified data
+     * @throws NoSuchElementException if the element with the data is not found
      */
     @Override
-    public Node<T> getElement(Object data) throws NoSuchElementException{
+    public Node<T> getElement(Object data) throws NoSuchElementException {
         Node<T> curr = this.head;
 
-        while (curr != null){
-            if (curr.getData().equals(data)){
+        while (curr != null) {
+            if (curr.getData().equals(data)) {
                 return curr;
             }
             curr = curr.getNext();
@@ -112,15 +116,15 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns the index of the object to be searched, returns -1 if not found.
-     * @param data
-     * @return
+     * @param data The data of the element to search for
+     * @return The index of the element with the specified data, or -1 if not found
      */
     @Override
     public int search(Object data) {
         Node<T> curr = this.head;
 
-        for (int i = 0; i < this.size; i++){
-            if (curr.getData().equals(data)){
+        for (int i = 0; i < this.size; i++) {
+            if (curr.getData().equals(data)) {
                 return i;
             }
             curr = curr.getNext();
@@ -130,16 +134,16 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method inserts a new node at the head of the linked list.
-     * @param data
+     * @param data The data of the element to be inserted
      */
     @Override
     public void insertAtHead(Object data) {
         Node<T> newNode = new Node(data);
 
-        if (this.head == null){
+        if (this.head == null) {
             this.head = newNode;
             this.tail = newNode;
-        }else {
+        } else {
             newNode.setPrev(null);
             newNode.setNext(this.head);
             this.head.setPrev(newNode);
@@ -151,16 +155,16 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method inserts a new node at the tail of the linked list.
-     * @param data
+     * @param data The data of the element to be inserted
      */
     @Override
     public void insertAtTail(Object data) {
         Node<T> newNode = new Node(data);
 
-        if (this.head == null){
+        if (this.head == null) {
             this.head = newNode;
             this.tail = newNode;
-        }else {
+        } else {
             this.tail.setNext(newNode);
             newNode.setPrev(this.tail);
             newNode.setNext(null);
@@ -172,25 +176,25 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method inserts a new node at the chosen index of the linked list.
-     * @param index
-     * @param data
+     * @param index The index at which to insert the element
+     * @param data The data of the element to be inserted
      */
     @Override
     public void insertAtIndex(int index, Object data) {
         Node<T> newNode = new Node(data);
 
-        if (index < 0 || index > this.size){
+        if (index < 0 || index > this.size) {
             throw new IndexOutOfBoundsException();
         }
 
-        if (this.head == null){
+        if (this.head == null) {
             this.head = newNode;
             this.tail = newNode;
             ++size;
             return;
         }
 
-        if (index == 0){
+        if (index == 0) {
             this.head.setPrev(newNode);
             newNode.setNext(this.head);
             newNode.setPrev(null);
@@ -199,9 +203,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
             return;
         }
 
-
-
-        if (index == this.size){
+        if (index == this.size) {
             this.tail.setNext(newNode);
             newNode.setPrev(this.tail);
             newNode.setNext(null);
@@ -213,7 +215,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
         Node<T> curr = this.head;
         int counter = 0;
 
-        while (counter != index){
+        while (counter != index) {
             curr = curr.getNext();
             ++counter;
         }
@@ -231,11 +233,11 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
      */
     @Override
     public void deleteAtHead() {
-        if (this.head !=null){
-            if (this.head.getNext() == null && this.tail.getPrev() == null){
+        if (this.head != null) {
+            if (this.head.getNext() == null && this.tail.getPrev() == null) {
                 this.head = null;
                 this.tail = null;
-            }else {
+            } else {
                 Node<T> oldHead = this.head;
                 this.head = this.head.getNext();
                 this.head.setPrev(null);
@@ -250,11 +252,11 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
      */
     @Override
     public void deleteAtTail() {
-        if (this.head != null){
-            if (this.head.getNext() == null && this.head.getPrev() == null){
+        if (this.head != null) {
+            if (this.head.getNext() == null && this.head.getPrev() == null) {
                 this.head = null;
                 this.tail = null;
-            }else {
+            } else {
                 Node<T> oldTail = this.tail;
                 this.tail = this.tail.getPrev();
                 this.tail.setNext(null);
@@ -266,17 +268,17 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method deletes a node at the specified index.
-     * @param index
+     * @param index The index of the element to be deleted
      */
     @Override
     public void deleteAtIndex(int index) {
         Node<T> curr = this.head;
 
-        if (index < 0 || index >= this.size){
+        if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException();
         }
 
-        if (index == 0){
+        if (index == 0) {
             Node<T> oldHead = this.head;
             this.head = this.head.getNext();
             this.head.setPrev(null);
@@ -285,7 +287,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
             return;
         }
 
-        if (index == this.size - 1){
+        if (index == this.size - 1) {
             Node<T> oldTail = this.tail;
             this.tail = this.tail.getPrev();
             this.tail.setNext(null);
@@ -295,7 +297,7 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
         int counter = 0;
 
-        while (counter != index){
+        while (counter != index) {
             curr = curr.getNext();
             counter++;
         }
@@ -308,21 +310,21 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
 
     /**
      * This method returns a visual representation of the linked list.
-     * @return
+     * @return A string representation of the linked list
      */
     @Override
     public String toString() {
         String s = "";
         Node<T> curr = this.head;
 
-        s+= "null <-> ";
+        s += "null <-> ";
 
-        while (curr != null){
+        while (curr != null) {
             s += curr.toString() + " <-> ";
             curr = curr.getNext();
         }
 
-        s+= "null";
+        s += "null";
 
         return s;
     }
