@@ -243,8 +243,9 @@ public class MyDoublyLinkedList<T> implements LinkedListInterface {
                 this.head.setPrev(null);
                 oldHead.setNext(null);
             }
+            --this.size;
         }
-        --this.size;
+
     }
 
     /**
