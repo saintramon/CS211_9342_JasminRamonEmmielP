@@ -1,1 +1,1 @@
-# This code has stories to tell, but its origins deserve acknowledgment.
+# These codes are your playground, but in the sandbox of development, give credit where credit is due ;)
