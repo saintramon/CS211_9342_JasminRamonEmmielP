@@ -28,6 +28,12 @@
 package prelim;
 
 public class ExecutableMyDoublyLinkedCircularList {
+    /**
+     * The Video class will be used to emulate the Doubly Circular Linked List. It has a channel and video title attribute.
+     *
+     * Consider the scenario of watching a playlist of Youtube videos. You can play the next video, go back to the previous video, and vice versa.
+     * You can also watch the same video again and again. Thus, this class best fits the doubly circular linked list in real life.
+     */
     private class Video{
         private String channel;
         private String title;
@@ -68,6 +74,12 @@ public class ExecutableMyDoublyLinkedCircularList {
         }
     }
 
+    /**
+     * The run method shows how different methods of the doubly circular linked list can be utlizied.
+     * It initially shows how to use the insertion methods by the head, the tail, or wherever you want.
+     * It then shows the deletion methods in which you can delete from the head, tail, or from the chosen index.
+     * Lastly, it shows the search method that returns the index of the key if found.
+     */
     public void run(){
         MyDoublyLinkedCircularList<Video> playlist = new MyDoublyLinkedCircularList();
 
