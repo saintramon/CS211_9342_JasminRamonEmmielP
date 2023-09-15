@@ -41,7 +41,7 @@ public class MyDoublyLinkedCircularList<T> implements LinkedListInterface{
     }
 
     @Override
-    public Object getElement(int index) {
+    public Node<T> getElement(int index) {
         Node<T> curr = this.head;
         int counter = 0;
 
@@ -58,7 +58,7 @@ public class MyDoublyLinkedCircularList<T> implements LinkedListInterface{
     }
 
     @Override
-    public Object getElement(Object data) {
+    public Node<T> getElement(Object data) {
         Node<T> curr = this.head;
 
         while (curr != null) {
@@ -126,7 +126,39 @@ public class MyDoublyLinkedCircularList<T> implements LinkedListInterface{
 
     @Override
     public void insertAtIndex(int index, Object data) {
+        Node<T> newNode = new Node(data);
 
+        if (index < 0 || index > this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+
+        if (this.head == null){
+            this.head = newNode;
+            this.tail = newNode;
+            this.head.setPrev(this.tail);
+            this.tail.setNext(this.head);
+        }else {
+            if (index == 0){
+                insertAtHead(data);
+            } else if (index == this.size) {
+                insertAtTail(data);
+            }else {
+                Node<T> curr = this.head;
+                int counter = 0;
+
+                while (counter < index - 1){
+                    curr = curr.getNext();
+                    ++counter;
+                }
+                //NEEDS FIXING
+                newNode.setNext(curr.getNext());
+                curr.setNext(newNode);
+                curr.getNext().setPrev(newNode);
+                newNode.setPrev(curr);
+            }
+        }
+
+        ++size;
     }
 
     @Override
@@ -167,7 +199,19 @@ public class MyDoublyLinkedCircularList<T> implements LinkedListInterface{
 
     @Override
     public void deleteAtIndex(int index) {
+        if (index < 0 || index >= this.size) {
+            throw new IndexOutOfBoundsException("Your chosen index is not within range of the linked list size");
+        }
 
+        if (this.head != null){
+            if (index == 0){
+                deleteAtHead();
+            } else if (index == this.size - 1) {
+                deleteAtTail();
+            }else {
+                Node<T> curr = this.head;
+            }
+        }
     }
 
     @Override

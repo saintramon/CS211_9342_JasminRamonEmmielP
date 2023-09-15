@@ -67,6 +67,15 @@ public class ExecutableMyDoublyLinkedCircularList {
         System.out.println("TAIL.NEXT: " + playlist.getTail().getNext());
         System.out.println("CURRENT SIZE: " + playlist.getSize());
         System.out.println(playlist.toString());
-        System.out.println(playlist.search(v3));
+
+        playlist.insertAtIndex(2,v6);
+        System.out.println("\n\nCURRENT HEAD: " + playlist.getHead());
+        System.out.println("CURRENT TAIL: " + playlist.getTail());
+        System.out.println("HEAD.PREV: " + playlist.getHead().getPrev());
+        System.out.println("TAIL.NEXT: " + playlist.getTail().getNext());
+        System.out.println("CURRENT SIZE: " + playlist.getSize());
+        System.out.println(playlist.toString());
+
+        System.out.println(playlist.getElement(3).getPrev());
     }
 }
