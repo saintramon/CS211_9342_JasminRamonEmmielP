@@ -104,6 +104,7 @@ public class ExecutableMySinglyLinkedCircularList {
         NBA.insertAtTail(b9);
         NBA.insertAtIndex(10,b10);
 
+        System.out.println("ADDING b1 at head, b2 at tail, b3 at index 2, b4 at tail, b5 at index 4, b6 at tail, b7 at index 6, b8 at tail, b9 at tail, and b10 at index 10");
         System.out.println("CURRENT HEAD: " + NBA.getHead());
         System.out.println("CURRENT TAIL: " + NBA.getTail());
         System.out.println("CURRENT TAIL.NEXT: " + NBA.getTail().getNext());
@@ -115,7 +116,8 @@ public class ExecutableMySinglyLinkedCircularList {
         NBA.deleteAtTail();
         NBA.deleteAtIndex(3);
         NBA.deleteAtIndex(6);
-        System.out.println("\n\nCURRENT HEAD: " + NBA.getHead());
+        System.out.println("\n\nDELETING current head, current tail, node at index 3, and node at index 6");
+        System.out.println("CURRENT HEAD: " + NBA.getHead());
         System.out.println("CURRENT TAIL: " + NBA.getTail());
         System.out.println("CURRENT TAIL.NEXT: " + NBA.getTail().getNext());
         System.out.println("CURRENT SIZE: " + NBA.getSize());

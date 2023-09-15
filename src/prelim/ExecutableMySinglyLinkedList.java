@@ -108,20 +108,23 @@ public class ExecutableMySinglyLinkedList {
         singly.insertAtTail(s3);
         singly.insertAtTail(s4);
 
+        System.out.println("ADDING s1 at head, s2, s3, and s4");
         System.out.println("CURRENT HEAD: " + singly.getHead());
         System.out.println("CURRENT TAIL: " + singly.getTail());
         System.out.println("CURRENT SIZE: " + singly.getSize());
         System.out.println(singly.toString());
 
         singly.insertAtHead(s5);
-        System.out.println("\n\n\nCURRENT HEAD: " + singly.getHead());
+        System.out.println("\n\n\nADDING s5 at head");
+        System.out.println("CURRENT HEAD: " + singly.getHead());
         System.out.println("CURRENT TAIL: " + singly.getTail());
         System.out.println("CURRENT SIZE: " + singly.getSize());
         System.out.println(singly.toString());
 
         singly.deleteAtTail();
         singly.deleteAtIndex(3);
-        System.out.println("\n\n\nCURRENT HEAD: " + singly.getHead());
+        System.out.println("\n\n\nDELETING current tail and node at index 3");
+        System.out.println("CURRENT HEAD: " + singly.getHead());
         System.out.println("CURRENT TAIL: " + singly.getTail());
         System.out.println("CURRENT SIZE: " + singly.getSize());
         System.out.println(singly.toString());

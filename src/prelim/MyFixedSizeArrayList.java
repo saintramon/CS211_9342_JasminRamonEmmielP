@@ -7,9 +7,13 @@ package prelim;
 import java.util.*;
 
 public class MyFixedSizeArrayList implements MyList<Object> {
-    private final int size = 5;
+    private int size;
 
-    private final Object[] array = new Object[size];
+    private final Object[] array = new Object[5];
+
+    public MyFixedSizeArrayList(){
+        this.size = 0;
+    }
 
     /**
      * This method returns the size of the list which is 5.
@@ -18,7 +22,13 @@ public class MyFixedSizeArrayList implements MyList<Object> {
      */
     @Override
     public int getSize() {
-        return size;
+        int count = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -32,6 +42,7 @@ public class MyFixedSizeArrayList implements MyList<Object> {
         for (int i = 0; i < this.array.length; i++) {
             if (array[i] == null) {
                 array[i] = data;
+                ++this.size;
                 return;
             }
         }
@@ -52,6 +63,7 @@ public class MyFixedSizeArrayList implements MyList<Object> {
         }
 
         array[index] = data;
+        ++this.size;
     }
 
     /**
@@ -97,6 +109,7 @@ public class MyFixedSizeArrayList implements MyList<Object> {
         for (int i = 0; i < this.array.length; i++) {
             if (data.equals(array[i])) {
                 array[i] = null;
+                --this.size;
                 return true;
             }
         }
