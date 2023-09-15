@@ -93,7 +93,7 @@ public class ExecutableMyDoublyLinkedList {
         doubly.insertAtTail(m2);
         doubly.insertAtIndex(2,m3);
 
-
+        System.out.println("ADDING m1 at head, m2 at tail, and m3 at index 3");
         System.out.println("CURRENT HEAD: " + doubly.getHead());
         System.out.println("CURRENT TAIL: " + doubly.getTail());
         System.out.println("CURRENT SIZE: " + doubly.getSize());
@@ -103,7 +103,8 @@ public class ExecutableMyDoublyLinkedList {
         doubly.insertAtTail(m5);
         doubly.insertAtTail(m6);
         doubly.insertAtIndex(6,m7);
-        System.out.println("\n\nCURRENT HEAD: " + doubly.getHead());
+        System.out.println("\n\nADDING m4 at head, m5 at tail, m6 at tail, and m7 in index 6");
+        System.out.println("CURRENT HEAD: " + doubly.getHead());
         System.out.println("CURRENT TAIL: " + doubly.getTail());
         System.out.println("CURRENT SIZE: " + doubly.getSize());
         System.out.println(doubly.toString());
@@ -111,7 +112,8 @@ public class ExecutableMyDoublyLinkedList {
         doubly.deleteAtTail();
         doubly.deleteAtHead();
         doubly.deleteAtIndex(3);
-        System.out.println("\n\nCURRENT HEAD: " + doubly.getHead());
+        System.out.println("\n\nDELETING current tail, current head, and node at index 3");
+        System.out.println("CURRENT HEAD: " + doubly.getHead());
         System.out.println("CURRENT TAIL: " + doubly.getTail());
         System.out.println("CURRENT SIZE: " + doubly.getSize());
         System.out.println(doubly.toString());

@@ -105,6 +105,7 @@ public class ExecutableMyGrowingArrayList {
         bookList.insert(b6);
         bookList.insert(6,b7);
 
+        System.out.println("ADDING: b1, b2, b3, b4, b5, b6, and b7");
         for (int i = 0; i < bookList.getSize(); i++){
             System.out.println(bookList.getElement(i).toString());
         }
@@ -116,6 +117,7 @@ public class ExecutableMyGrowingArrayList {
 
         bookList.delete(b7);
         bookList.delete(2);
+        System.out.println("DELETING: b7, and the node in index 2");
         for (int i = 0; i < bookList.getSize(); i++){
             System.out.println(bookList.getElement(i).toString());
         }
@@ -123,5 +125,7 @@ public class ExecutableMyGrowingArrayList {
 
         System.out.println("\n\nSEARCH KEY: " + b5.toString());
         System.out.println("SERCH STATUS (index of key): " + bookList.search(b5));
+        System.out.println("\nSEARCH KEY: " + b7.toString());
+        System.out.println("SERCH STATUS (index of key): " + bookList.search(b7));
     }
 }

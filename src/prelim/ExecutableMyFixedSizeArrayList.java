@@ -26,7 +26,8 @@ package prelim;
 
 public class ExecutableMyFixedSizeArrayList {
     /**
-     * This is the Student class that will be utilized for the demonstration of the MyFixedArrayList class
+     * This is the Student class that will be utilized for the demonstration of the MyFixedArrayList class.
+     * Imagine there is a class in which it only accepts a certain amount of students.
      */
     private class Student{
         private String lastName;
@@ -102,8 +103,8 @@ public class ExecutableMyFixedSizeArrayList {
             System.out.println(studentList.getElement(i));
         }
 
-        System.out.println("\n\nSIZE OF THE LIST: " + studentList.getSize());
         studentList.delete(s5);
+        System.out.println("\n\nSIZE OF THE LIST: " + studentList.getSize());
         for (int i = 0; i < studentList.getSize(); i++){
             System.out.println(studentList.getElement(i));
         }
